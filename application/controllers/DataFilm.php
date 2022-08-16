@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller
+class DataFilm extends CI_Controller
 {
 
     /**
@@ -25,6 +25,13 @@ class Home extends CI_Controller
             'title' => 'Home'
         );
 
-        $this->template->load('template', 'home/home', $data);
+        $this->template->load('tempadmin', 'admin/film', $data);
+    }
+
+    public function proses()
+    {
+        $post = $this->input->post(null, TRUE);
+
+        var_dump($post);
     }
 }
