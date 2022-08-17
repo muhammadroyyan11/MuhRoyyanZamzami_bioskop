@@ -37,4 +37,16 @@ class Film extends CI_Controller
 
         $this->template->load('template', 'film/film', $data);
     }
+
+    public function detail($id)
+    {
+
+        $get = $this->film->get(['kd_film' => $id])->row();
+        $data = array(
+            'title' => 'Detil Film',
+            'row' => $get
+        );
+
+        $this->template->load('template', 'film/detail', $data);
+    }
 }

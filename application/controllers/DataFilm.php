@@ -119,51 +119,37 @@ class DataFilm extends CI_Controller
     {
         $post = $this->input->post(null, TRUE);
 
-        $converArray = explode(" ", strtolower($post['judul']));
+        $newArray = explode(" ", strtolower($post['judul']));
 
-        $code = $this->getCode($converArray);
+        $getCode = $this->getCode($newArray);
 
-        // if ($code) {
-        //     var_dump($code);
-        // } else {
-        //     echo 'bogel';
-        // }
-        var_dump($code);
-
+        $getCount = $this->film->get()->num_rows();
 
         // Mengenerate Kode Film
-        $kode_terakhir = $this->karyawan->getMax('employees', 'emp_no');
-        $kode_tambah = substr($kode_terakhir, -5, 5);
+        $kode_terakhir = $getCount;
+        $kode_tambah = substr($kode_terakhir, -3, 3);
         $kode_tambah++;
-        $number = str_pad($kode_tambah, 5, '0', STR_PAD_LEFT);
+        $number = $getCode . str_pad($kode_tambah, 3, '0', STR_PAD_LEFT);
 
+        $config['upload_path']          = './assets/uploads/poster/';
+        $config['allowed_types']        = 'jpeg|jpg|png';
+        $config['max_size']             = 10000;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+        $config['file_name']            = $number . '-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
 
-        // foreach ($converArray as $row) {
-        //     if (preg_match('/^[aiueo]/', $row[0])) {
-        //         echo  $row[0] . " = vokal <br >";
-        //     } else {
-        //         echo $row[0] . " = konsonan <br >";
-        //     }
-        // }
+        $this->load->library('upload', $config);
 
-        // $config['upload_path']          = './assets/uploads/poster/';
-        // $config['allowed_types']        = 'jpeg|jpg|png';
-        // $config['max_size']             = 10000;
-        // $config['max_width']            = 10000;
-        // $config['max_height']           = 10000;
-        // $config['file_name']            = $this->input->post('judul') . date('ymd') . '-' . substr(md5(rand()), 0, 10);
-
-        // $this->load->library('upload', $config);
-
-        // if ($this->upload->do_upload('poster')) {
-        //     $post['poster'] = $this->upload->data('file_name');
-        //     // $this->film->add($post);
-        //     if ($this->db->affected_rows() > 0) {
-        //         set_pesan('Film Berhasil Dismpan');
-        //     }
-        //     // redirect('dataFilm');
-        // } else {
-        //     set_pesan('Terjadi kesalahan saat menyimpan film', false);
-        // }
+        if ($this->upload->do_upload('poster')) {
+            $post['poster'] = $this->upload->data('file_name');
+            $post['kd_film'] = $number;
+            $this->film->add($post);
+            if ($this->db->affected_rows() > 0) {
+                set_pesan('Film Berhasil Dismpan');
+            }
+            redirect('dataFilm');
+        } else {
+            set_pesan('Terjadi kesalahan saat menyimpan film', false);
+        }
     }
 }

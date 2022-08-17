@@ -10,6 +10,7 @@
 
     <!-- datatable -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <script src="https://kit.fontawesome.com/c8d50efb9e.js" crossorigin="anonymous"></script>
     <link rel=" stylesheet" href="<?= base_url() ?>assets/style.css">
 
     <title>Bioskop | <?= $title ?></title>

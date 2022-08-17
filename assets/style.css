@@ -11,3 +11,16 @@
 section {
 	padding-top: 5rem;
 }
+
+.card {
+	margin: 0.5rem;
+}
+table {
+	border-collapse: collapse;
+	padding: 15px;
+}
+
+tr {
+	border-bottom: 1pt solid black;
+	padding: 15px;
+}
