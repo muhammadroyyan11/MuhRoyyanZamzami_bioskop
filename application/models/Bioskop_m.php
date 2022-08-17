@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Film_m extends CI_Model
+class Bioskop_m extends CI_Model
 {
     public function get($where = null)
     {
         $this->db->select('*');
-        $this->db->from('film');
+        $this->db->from('bioskop');
         if ($where != null) {
             $this->db->where($where);
         }
@@ -16,8 +16,8 @@ class Film_m extends CI_Model
     public function getLimit()
     {
         $this->db->select('*');
-        $this->db->from('film');
-        $this->db->order_by('id_film', 'DESC');
+        $this->db->from('bioskop');
+        $this->db->order_by('id_bioskop', 'DESC');
         $this->db->limit(6);
         return $this->db->get();
     }

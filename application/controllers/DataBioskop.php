@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller
+class DataBioskop extends CI_Controller
 {
 
     /**
@@ -19,21 +19,34 @@ class Home extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/userguide3/general/urls.html
      */
+
     public function __construct()
     {
         parent::__construct();
         date_default_timezone_set('Asia/Jakarta');
-        $this->load->model('Film_m', 'film');
+        $this->load->model('Bioskop_m', 'bioskop');
     }
 
     public function index()
     {
-        $get = $this->film->get()->result();
+        $get = $this->bioskop->get()->result();
         $data = array(
-            'title' => 'Home',
-            'film' => $get
+            'title' => 'List Film',
+            'bioskop' => $get
         );
 
-        $this->template->load('template', 'home/home', $data);
+        $this->template->load('template', 'bioskop/bioskop', $data);
+    }
+
+    public function detail($id)
+    {
+        $get = $this->bioskop->get(['kd_bioskop' => $id])->row();
+
+        $data = array(
+            'title' => 'List Film',
+            'row' => $get
+        );
+
+        $this->template->load('template', 'bioskop/detail', $data);
     }
 }

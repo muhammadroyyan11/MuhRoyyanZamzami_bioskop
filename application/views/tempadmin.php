@@ -10,8 +10,11 @@
 
     <!-- datatable -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-    <script src="https://kit.fontawesome.com/c8d50efb9e.js" crossorigin="anonymous"></script>
+
     <link rel=" stylesheet" href="<?= base_url() ?>assets/style.css">
+
+    <!-- fa icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <title>Bioskop | <?= $title ?></title>
 </head>
@@ -35,7 +38,7 @@
                         <a class="nav-link" href="<?= site_url('dataFilm') ?>">Film</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Bioskop</a>
+                        <a class="nav-link" href="<?= site_url('dataBioskop') ?>">Bioskop</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Jadwl Tayang</a>

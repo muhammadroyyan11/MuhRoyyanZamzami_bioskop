@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller
+class Film extends CI_Controller
 {
 
     /**
@@ -19,6 +19,7 @@ class Home extends CI_Controller
      * map to /index.php/welcome/<method_name>
      * @see https://codeigniter.com/userguide3/general/urls.html
      */
+
     public function __construct()
     {
         parent::__construct();
@@ -30,10 +31,10 @@ class Home extends CI_Controller
     {
         $get = $this->film->get()->result();
         $data = array(
-            'title' => 'Home',
+            'title' => 'List Film',
             'film' => $get
         );
 
-        $this->template->load('template', 'home/home', $data);
+        $this->template->load('template', 'film/film', $data);
     }
 }

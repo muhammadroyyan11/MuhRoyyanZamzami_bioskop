@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3">
-                <img src="<?= base_url() ?>assets/img/spiderman.jpg" class="card-img-top" <img src="img_girl.jpg">
+                <img src="<?= base_url() ?>assets/uploads/poster/<?= $row->poster ?>" class="card-img-top">
             </div>
             <div class="col-md-9">
                 <h3 class="text-center mb-4"><?= $row->judul_film ?></h3>
