@@ -31,22 +31,46 @@ class DataBioskop extends CI_Controller
     {
         $get = $this->bioskop->get()->result();
         $data = array(
-            'title' => 'List Film',
+            'title' => 'Data Bioskop',
             'bioskop' => $get
         );
 
-        $this->template->load('template', 'bioskop/bioskop', $data);
+        $this->template->load('tempadmin', 'admin/bioskop', $data);
     }
 
-    public function detail($id)
+    public function proses()
     {
-        $get = $this->bioskop->get(['kd_bioskop' => $id])->row();
+        $post = $this->input->post(null, TRUE);
 
-        $data = array(
-            'title' => 'List Film',
-            'row' => $get
-        );
+        $getCode = strtoupper(random_string('alpha', 3));
 
-        $this->template->load('template', 'bioskop/detail', $data);
+        $getCount = $this->bioskop->get()->num_rows();
+
+        // Mengenerate Kode Film
+        $kode_terakhir = $getCount;
+        $kode_tambah = substr($kode_terakhir, -3, 3);
+        $kode_tambah++;
+        $number = $getCode . str_pad($kode_tambah, 3, '0', STR_PAD_LEFT);
+
+        $config['upload_path']          = './assets/uploads/bioskop/';
+        $config['allowed_types']        = 'jpeg|jpg|png';
+        $config['max_size']             = 10000;
+        $config['max_width']            = 10000;
+        $config['max_height']           = 10000;
+        $config['file_name']            = $post['nama_bisokop'] . '-' . date('ymd') . '-' . substr(md5(rand()), 0, 10);
+
+        $this->load->library('upload', $config);
+
+        if ($this->upload->do_upload('foto')) {
+            $post['foto'] = $this->upload->data('file_name');
+            $post['kd_bioskop'] = $number;
+            $this->bioskop->add($post);
+            if ($this->db->affected_rows() > 0) {
+                set_pesan('Film Berhasil Dismpan');
+            }
+            redirect('dataBiskop');
+        } else {
+            set_pesan('Terjadi kesalahan saat menyimpan film', false);
+        }
     }
 }

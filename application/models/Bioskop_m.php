@@ -25,14 +25,14 @@ class Bioskop_m extends CI_Model
     public function add($post)
     {
         $params = [
-            'kd_film' => $post['kd_film'],
-            'judul_film' => $post['judul'],
-            'tgl_launc' => $post['tgl_launc'],
-            'synopsys' => $post['sipnosis'],
-            'genre' => $post['genre'],
-            'poster' => $post['poster']
+            'kd_bioskop' => $post['kd_bioskop'],
+            'nama_bioskop' => $post['nama_bioskop'],
+            'kota' => $post['kota'],
+            'alamat_lengkap' => $post['alamat_lengkap'],
+            'harga' => $post['harga'],
+            'foto' => $post['foto']
 
         ];
-        $this->db->insert('film', $params);
+        $this->db->insert('bioskop', $params);
     }
 }
