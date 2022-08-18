@@ -5,7 +5,7 @@
                 <h4 class="text-center"><?= $title ?></h4>
                 <div class="float-start">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Tambah Film
+                        Tambah Bioskop
                     </button>
                 </div>
             </div>

@@ -41,7 +41,7 @@
                         <a class="nav-link" href="<?= site_url('dataBioskop') ?>">Bioskop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Jadwl Tayang</a>
+                        <a class="nav-link" href="<?= site_url('dataJadwal') ?>">Jadwal Tayang</a>
                     </li>
                 </ul>
             </div>
