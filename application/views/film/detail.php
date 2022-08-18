@@ -33,7 +33,7 @@
                         <td><?= longdate_indo($row->tgl_launc); ?></td>
                     </tr>
                 </table>
-                <a href="#" class="btn btn-primary">Pesan kursi</a>
+                <a href="<?= site_url('film/showBioskop/') . $row->id_film ?>" class="btn btn-primary">Pesan kursi</a>
             </div>
         </div>
     </div>

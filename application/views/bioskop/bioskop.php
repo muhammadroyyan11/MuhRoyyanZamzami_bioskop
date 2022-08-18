@@ -11,12 +11,12 @@
                 <?php foreach ($bioskop as $key => $data) { ?>
                     <div class="col-md-4">
                         <div class="card">
-                            <img src="<?= base_url() ?>assets/uploads/bioskop/<?= $data->foto ?>" class="card-img-top" style="weight: 300px; height:400px;">
+                            <img src="<?= base_url() ?>assets/uploads/bioskop/<?= $data->foto ?>" class="card-img-top">
                             <div class="card-body">
-                                <h5 class="card-title mb-4 text-center"><a href="<?= site_url('film/detail/') . $data->kd_bioskop ?>" class="text-dark"><?= $data->nama_bioskop ?></a></h5>
+                                <h5 class="card-title mb-4 text-center"><a href="<?= site_url('bioskop/detail/') . $data->id_bioskop ?>" class="text-dark"><?= $data->nama_bioskop ?></a></h5>
                                 <p class="card-text mb-1"><i class="fa fa-map-marker"></i> <?= $data->kota ?></p>
                                 <p class="card-text"><?= character_limiter($data->alamat_lengkap, 40) ?></p>
-                                <a href="<?= site_url('dataBioskop/detail/') . $data->kd_bioskop ?>" class="btn btn-primary">Detail</a>
+                                <a href="<?= site_url('bioskop/detail/') . $data->id_bioskop ?>" class="btn btn-primary">Detail</a>
                             </div>
                         </div>
                     </div>

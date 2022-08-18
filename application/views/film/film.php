@@ -16,7 +16,8 @@
                                 <h5 class="card-title mb-4 text-center"><a href="<?= site_url('film/detail/') . $data->kd_film ?>" class="text-dark"><?= $data->judul_film ?></a></h5>
                                 <p class="card-text mb-1"><i class="fa clock-o fa-clock-o"></i> 199 min</p>
                                 <p class="card-text">Now Playing</p>
-                                <a href="<?= site_url('film/detail/') . $data->kd_film ?>" class="btn btn-primary">Pesan tiket</a>
+                                <a href="<?= site_url('film/detail/') . $data->kd_film ?>" class="btn btn-primary">Detail Fllm</a>
+                                <a href="<?= site_url('film/showBioskop/') . $data->jd ?>" class="btn btn-success">Pesan tiket</a>
                             </div>
                         </div>
                     </div>

@@ -24,7 +24,7 @@ class Bioskop extends CI_Controller
     {
         parent::__construct();
         date_default_timezone_set('Asia/Jakarta');
-        $this->load->model('Bioskop_m', 'bioskop');
+        $this->load->model(['Jadwal_m' => 'jadwal', 'Bioskop_m' => 'bioskop', 'Film_m' => 'film']);
     }
 
     public function index()
@@ -40,11 +40,16 @@ class Bioskop extends CI_Controller
 
     public function detail($id)
     {
-        $get = $this->bioskop->get(['kd_bioskop' => $id])->row();
+        $get = $this->bioskop->get(['id_bioskop' => $id])->row();
+
+        $getTayang = $this->jadwal->get(['j.bioskop' => $id])->result();
+
+        // var_dump($getTayang);
 
         $data = array(
             'title' => 'List Film',
-            'row' => $get
+            'row' => $get,
+            'film' => $getTayang
         );
 
         $this->template->load('template', 'bioskop/detail', $data);

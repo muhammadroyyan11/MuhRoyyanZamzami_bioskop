@@ -1,35 +1,25 @@
 <section>
     <div class="container">
-        <div class="row mb-3">
-            <div class="col-md">
-                <?= $this->session->flashdata('pesan'); ?>
-                <table class="display" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Kode</th>
-                            <th>Nama Bioskop</th>
-                            <th>Kota</th>
-                            <th>Alamat Lengkap</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        foreach ($bioskop as $key => $data) {
-                        ?>
-                            <tr>
-                                <td><?= $data->kd_bioskop ?></td>
-                                <td><?= $data->nama_bioskop ?></td>
-                                <td><?= $data->kota ?></td>
-                                <td><?= $data->alamat_lengkap ?></td>
-                                <td>
-                                    <a href="<?= base_url('bioskop/detail/') . $data->kd_bioskop ?>" class="btn btn-circle btn-sm btn-primary">detail</a>
-                                    <a href="<?= base_url('bisokd/detail/') . $data->kd_bioskop ?>" class="btn btn-circle btn-sm btn-danger">hapus</a>
-                                </td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md text-center">
+                    <h2>Pilih Bioskop!</h2>
+                </div>
+            </div>
+            <div class="row">
+                <?php foreach ($film as $key => $data) { ?>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img src="<?= base_url() ?>assets/uploads/bioskop/<?= $data->foto ?>" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4 text-center"><a href="<?= site_url('film/detail/') . $data->kd_film ?>" class="text-dark"><?= $data->nama_bioskop ?></a></h5>
+                                <p class="card-text mb-1"><i class="fa fa-money"></i> Rp. <?= number_format($data->harga, 2, ',', '.'); ?></p>
+                                <p class="card-text">Kursi tersedia adalah <?= $data->jumlah_kursi ?></p>
+                                <a href="<?= site_url('film/showBioskop/') . $data->jd ?>" class="btn btn-primary">Pesan tiket</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>

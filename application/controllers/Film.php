@@ -24,18 +24,29 @@ class Film extends CI_Controller
     {
         parent::__construct();
         date_default_timezone_set('Asia/Jakarta');
-        $this->load->model('Film_m', 'film');
+        $this->load->model(['Jadwal_m' => 'jadwal', 'Bioskop_m' => 'bioskop', 'Film_m' => 'film']);;
     }
 
     public function index()
     {
-        $get = $this->film->get()->result();
+        $get = $this->jadwal->get()->result();
         $data = array(
             'title' => 'List Film',
             'film' => $get
         );
 
         $this->template->load('template', 'film/film', $data);
+    }
+
+    public function showBioskop($id)
+    {
+        $get = $this->jadwal->get(['j.judul_film' => $id])->result();
+        $data = array(
+            'title' => 'List Film',
+            'film' => $get
+        );
+
+        $this->template->load('template', 'film/listBioskopTayang', $data);
     }
 
     public function detail($id)
