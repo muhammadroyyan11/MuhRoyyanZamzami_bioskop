@@ -34,6 +34,7 @@
                                 <td><?= $data->alamat_lengkap ?></td>
                                 <td>
                                     <a href="<?= base_url('bioskop/detail/') . $data->id_bioskop ?>" class="btn btn-circle btn-sm btn-primary">detail</a>
+                                    <a href="<?= base_url('dataBioskop/delete/') . $data->id_bioskop ?>" onclick="return confirm('Apakah Anda Yakin ?')" class="btn btn-circle btn-sm btn-danger">hapus</a>
                                 </td>
                             </tr>
                         <?php } ?>

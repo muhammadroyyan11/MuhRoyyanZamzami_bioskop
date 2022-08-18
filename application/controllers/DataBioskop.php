@@ -69,7 +69,7 @@ class DataBioskop extends CI_Controller
             if ($this->db->affected_rows() > 0) {
                 set_pesan('Film Berhasil Dismpan');
             }
-            redirect('dataBiskop');
+            redirect('dataBioskop');
         } else {
             set_pesan('Terjadi kesalahan saat menyimpan film', false);
         }

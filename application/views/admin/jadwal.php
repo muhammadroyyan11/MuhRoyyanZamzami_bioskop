@@ -21,6 +21,7 @@
                             <th>Tanggal dan Waktu Tayang</th>
                             <th>Nama Bioskop</th>
                             <th>Jumlah Kursi</th>
+                            <th>aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -34,7 +35,9 @@
                                 <td><?= $data->tgl_waktu_tayang ?></td>
                                 <td><?= $data->nama_bioskop ?></td>
                                 <td><?= $data->jumlah_kursi ?></td>
-
+                                <td>
+                                    <a href="<?= base_url('dataJadwal/delete/') . $data->id_jadwal ?>" onclick="return confirm('Apakah Anda Yakin ?')" class="btn btn-circle btn-sm btn-danger">hapus</a>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>

@@ -156,7 +156,7 @@ class DataFilm extends CI_Controller
     public function delete($id)
     {
         // $id = $this->input->post('loket_id');
-        $this->film->del($id);
+        $this->film->del('film', ['id_film' => $id]);
 
         if ($this->db->affected_rows() > 0) {
             set_pesan('Data berhasil dihapus');

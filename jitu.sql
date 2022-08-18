@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Agu 2022 pada 05.25
+-- Waktu pembuatan: 18 Agu 2022 pada 05.29
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.28
 
@@ -42,7 +42,8 @@ CREATE TABLE `bioskop` (
 --
 
 INSERT INTO `bioskop` (`id_bioskop`, `kd_bioskop`, `nama_bioskop`, `kota`, `alamat_lengkap`, `harga`, `foto`) VALUES
-(1, 'ASD123', 'Moviemax Dinoyo', 'Malang', 'Jl. MT. Haryono No.193, Dinoyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65144', '30000', '-220818-88d2c6897c.jpg');
+(3, 'SJP001', 'Moviemax', 'asd', 'asdasd', '30000', '-220818-7aa8dd7b1d.jpg'),
+(4, 'OKJ002', 'Moviemax sanan', 'Malang', 'asd', '30000', '-220818-ab97b72bf6.jpg');
 
 -- --------------------------------------------------------
 
@@ -88,8 +89,7 @@ CREATE TABLE `jadwal` (
 --
 
 INSERT INTO `jadwal` (`id_jadwal`, `kd_jadwal`, `judul_film`, `bioskop`, `tgl_waktu_tayang`, `jumlah_kursi`) VALUES
-(1, 'ASDAD12313', 3, 1, '2022-08-19 07:08:11', 50),
-(2, 'ASD12318082022942RW00500002', 5, 1, '2022-08-18 09:42:00', 30);
+(4, 'SJP001120820221028TG00300001', 3, 3, '2022-08-12 10:28:00', 12);
 
 -- --------------------------------------------------------
 
@@ -105,14 +105,6 @@ CREATE TABLE `pesan` (
   `nama_bioskop` varchar(255) NOT NULL,
   `kursi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `pesan`
---
-
-INSERT INTO `pesan` (`id_pesan`, `jadwal`, `kd_pesan`, `judul`, `nama_bioskop`, `kursi`) VALUES
-(2, 2, 'JAM002', 'Run Winner', 'Moviemax Dinoyo', 18),
-(4, 2, 'YMU004', 'Run Winner', 'Moviemax Dinoyo', 1);
 
 --
 -- Indexes for dumped tables
@@ -153,19 +145,19 @@ ALTER TABLE `pesan`
 -- AUTO_INCREMENT untuk tabel `bioskop`
 --
 ALTER TABLE `bioskop`
-  MODIFY `id_bioskop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_bioskop` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `film`
 --
 ALTER TABLE `film`
-  MODIFY `id_film` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_film` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
-  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_jadwal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesan`
