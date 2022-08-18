@@ -35,4 +35,10 @@ class Film_m extends CI_Model
         ];
         $this->db->insert('film', $params);
     }
+
+    public function del($table, $where)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
 }

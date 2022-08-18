@@ -37,7 +37,6 @@
                                 <td><?= $data->jumlah_kursi ?></td>
                                 <td>
                                     <a href="<?= base_url('jadwal/detail/') . $data->kd_jadwal ?>" class="btn btn-circle btn-sm btn-primary">detail</a>
-                                    <a href="<?= base_url('jadwal/detail/') . $data->kd_jadwal ?>" class="btn btn-circle btn-sm btn-danger">hapus</a>
                                 </td>
                             </tr>
                         <?php } ?>

@@ -36,7 +36,7 @@
                                 <td><?= $data->genre ?></td>
                                 <td>
                                     <a href="<?= base_url('film/detail/') . $data->kd_film ?>" class="btn btn-circle btn-sm btn-primary">detail</a>
-                                    <a href="<?= base_url('film/detail/') . $data->kd_film ?>" class="btn btn-circle btn-sm btn-danger">hapus</a>
+                                    <a href="<?= base_url('dataFilm/delete/') . $data->id_film ?>" onclick="return confirm('Apakah Anda Yakin ?')" class="btn btn-circle btn-sm btn-danger">hapus</a>
                                 </td>
                             </tr>
                         <?php } ?>

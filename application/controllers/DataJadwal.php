@@ -70,4 +70,14 @@ class DataJadwal extends CI_Controller
         }
         redirect('dataJadwal');
     }
+
+    public function delete($id)
+    {
+        $this->film->del('jadwal', ['id_jadwal' => $id]);
+
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('Data berhasil dihapus');
+        }
+        redirect('dataBioskop');
+    }
 }

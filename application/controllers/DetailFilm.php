@@ -37,4 +37,15 @@ class Film extends CI_Controller
 
         $this->template->load('template', 'film/film', $data);
     }
+
+    public function delete($id)
+    {
+        // $id = $this->input->post('loket_id');
+        $this->loket_m->del($id);
+
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('Data berhasil dihapus');
+        }
+        redirect('dataFilm');
+    }
 }

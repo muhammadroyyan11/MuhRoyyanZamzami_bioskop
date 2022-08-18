@@ -25,6 +25,7 @@ class DataBioskop extends CI_Controller
         parent::__construct();
         date_default_timezone_set('Asia/Jakarta');
         $this->load->model('Bioskop_m', 'bioskop');
+        $this->load->model('Film_m', 'film');
     }
 
     public function index()
@@ -72,5 +73,15 @@ class DataBioskop extends CI_Controller
         } else {
             set_pesan('Terjadi kesalahan saat menyimpan film', false);
         }
+    }
+
+    public function delete($id)
+    {
+        $this->film->del('bioskop', ['id_bioskop' => $id]);
+
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('Data berhasil dihapus');
+        }
+        redirect('dataBioskop');
     }
 }

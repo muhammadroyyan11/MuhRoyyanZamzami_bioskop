@@ -33,8 +33,7 @@
                                 <td><?= $data->kota ?></td>
                                 <td><?= $data->alamat_lengkap ?></td>
                                 <td>
-                                    <a href="<?= base_url('bioskop/detail/') . $data->kd_bioskop ?>" class="btn btn-circle btn-sm btn-primary">detail</a>
-                                    <a href="<?= base_url('bisokd/detail/') . $data->kd_bioskop ?>" class="btn btn-circle btn-sm btn-danger">hapus</a>
+                                    <a href="<?= base_url('bioskop/detail/') . $data->id_bioskop ?>" class="btn btn-circle btn-sm btn-primary">detail</a>
                                 </td>
                             </tr>
                         <?php } ?>
