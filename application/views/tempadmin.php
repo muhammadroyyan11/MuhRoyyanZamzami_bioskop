@@ -32,10 +32,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<?= site_url('admin') ?>"><b>Home</b></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<?= site_url('dataFilm') ?>">Film</a>
+                        <a class="nav-link active" href="<?= site_url('dataFilm') ?>">Film</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= site_url('dataBioskop') ?>">Bioskop</a>

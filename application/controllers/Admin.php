@@ -21,10 +21,6 @@ class Admin extends CI_Controller
      */
     public function index()
     {
-        $data = array(
-            'title' => 'Home'
-        );
-
-        $this->template->load('tempadmin', 'admin/home', $data);
+        redirect('dataFilm');
     }
 }
