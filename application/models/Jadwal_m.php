@@ -19,6 +19,13 @@ class Jadwal_m extends CI_Model
         return $this->db->get();
     }
 
+    public function edit($post, $kurangiKursi)
+    {
+        $params['jumlah_kursi'] = $kurangiKursi;
+        $this->db->where('id_jadwal', $post['id_jadwal']);
+        $this->db->update('jadwal', $params);
+    }
+
     public function getLimit()
     {
         $this->db->select('*');

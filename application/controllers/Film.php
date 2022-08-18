@@ -66,7 +66,16 @@ class Film extends CI_Controller
 
         $generate = $number;
 
+        $getKursi = $this->jadwal->get(['j.id_jadwal' => $post['id_jadwal']])->row();
+
+        var_dump($getKursi->jumlah_kursi);
+
+        $kurangiKursi = $getKursi->jumlah_kursi - 1;
+
         $this->pesan->add($post, $generate);
+
+        $this->jadwal->edit($post, $kurangiKursi);
+
         if ($this->db->affected_rows() > 0) {
             set_pesan('Film Berhasil Dismpan');
         }
