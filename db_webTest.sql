@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Agu 2022 pada 04.40
+-- Waktu pembuatan: 18 Agu 2022 pada 05.00
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.28
 
@@ -103,8 +103,9 @@ INSERT INTO `jadwal` (`id_jadwal`, `kd_jadwal`, `judul_film`, `bioskop`, `tgl_wa
 CREATE TABLE `pesan` (
   `id_pesan` int(11) NOT NULL,
   `jadwal` int(11) NOT NULL,
+  `kd_pesan` varchar(255) NOT NULL,
   `judul` varchar(255) NOT NULL,
-  `bioskop` varchar(255) NOT NULL,
+  `nama_bioskop` varchar(255) NOT NULL,
   `kursi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -112,8 +113,9 @@ CREATE TABLE `pesan` (
 -- Dumping data untuk tabel `pesan`
 --
 
-INSERT INTO `pesan` (`id_pesan`, `jadwal`, `judul`, `bioskop`, `kursi`) VALUES
-(1, 3, 'Testing dengan gambar', 'Moviemax Sarinah', 13);
+INSERT INTO `pesan` (`id_pesan`, `jadwal`, `kd_pesan`, `judul`, `nama_bioskop`, `kursi`) VALUES
+(1, 3, 'KWE001', 'Testing dengan gambar', 'Moviemax Sarinah', 13),
+(2, 2, 'JAM002', 'Run Winner', 'Moviemax Dinoyo', 18);
 
 --
 -- Indexes for dumped tables
@@ -172,7 +174,7 @@ ALTER TABLE `jadwal`
 -- AUTO_INCREMENT untuk tabel `pesan`
 --
 ALTER TABLE `pesan`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
