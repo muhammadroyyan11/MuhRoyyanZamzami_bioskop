@@ -24,7 +24,7 @@ class Film extends CI_Controller
     {
         parent::__construct();
         date_default_timezone_set('Asia/Jakarta');
-        $this->load->model(['Jadwal_m' => 'jadwal', 'Bioskop_m' => 'bioskop', 'Film_m' => 'film']);;
+        $this->load->model(['Jadwal_m' => 'jadwal', 'Bioskop_m' => 'bioskop', 'Film_m' => 'film', 'Pesan_m' => 'pesan']);
     }
 
     public function index()
@@ -38,12 +38,39 @@ class Film extends CI_Controller
         $this->template->load('template', 'film/film', $data);
     }
 
+    public function pesan($id)
+    {
+        $get = $this->jadwal->get(['j.id_jadwal' => $id])->row();
+
+        $getKursi = $this->jadwal->get(['j.judul_film' => $id])->row();
+        $data = array(
+            'title' => 'List Film',
+            'row' => $get,
+        );
+
+        $this->template->load('template', 'film/formPesan', $data);
+    }
+
+    public function transaksi()
+    {
+        $post = $this->input->post(null, TRUE);
+
+        $this->pesan->add($post);
+        if ($this->db->affected_rows() > 0) {
+            set_pesan('Film Berhasil Dismpan');
+        }
+
+        redirect('history');
+    }
+
     public function showBioskop($id)
     {
         $get = $this->jadwal->get(['j.judul_film' => $id])->result();
+        $getKursi = $this->jadwal->get(['j.judul_film' => $id])->row();
         $data = array(
             'title' => 'List Film',
-            'film' => $get
+            'film' => $get,
+            'kursi' => $getKursi
         );
 
         $this->template->load('template', 'film/listBioskopTayang', $data);
