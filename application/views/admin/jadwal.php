@@ -21,7 +21,6 @@
                             <th>Tanggal dan Waktu Tayang</th>
                             <th>Nama Bioskop</th>
                             <th>Jumlah Kursi</th>
-                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -32,12 +31,10 @@
                             <tr>
                                 <td><?= $data->kd_jadwal ?></td>
                                 <td><?= $data->judul_film ?></td>
-                                <td><?= date_indo('2017-09-5') . '&nbsp&nbsp' . $newDate ?></td>
+                                <td><?= $data->tgl_waktu_tayang ?></td>
                                 <td><?= $data->nama_bioskop ?></td>
                                 <td><?= $data->jumlah_kursi ?></td>
-                                <td>
-                                    <a href="<?= base_url('jadwal/detail/') . $data->kd_jadwal ?>" class="btn btn-circle btn-sm btn-primary">detail</a>
-                                </td>
+
                             </tr>
                         <?php } ?>
                     </tbody>
