@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Agu 2022 pada 05.00
+-- Waktu pembuatan: 18 Agu 2022 pada 05.25
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 7.4.28
 
@@ -42,8 +42,7 @@ CREATE TABLE `bioskop` (
 --
 
 INSERT INTO `bioskop` (`id_bioskop`, `kd_bioskop`, `nama_bioskop`, `kota`, `alamat_lengkap`, `harga`, `foto`) VALUES
-(1, 'ASD123', 'Moviemax Dinoyo', 'Malang', 'Jl. MT. Haryono No.193, Dinoyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65144', '30000', '-220818-88d2c6897c.jpg'),
-(2, 'PRL002', 'Moviemax Sarinah', 'Malang', 'Jl. MT. Haryono No.193, Dinoyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65144', '30000', '-220818-88d2c6897c.jpg');
+(1, 'ASD123', 'Moviemax Dinoyo', 'Malang', 'Jl. MT. Haryono No.193, Dinoyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65144', '30000', '-220818-88d2c6897c.jpg');
 
 -- --------------------------------------------------------
 
@@ -67,7 +66,6 @@ CREATE TABLE `film` (
 
 INSERT INTO `film` (`id_film`, `kd_film`, `judul_film`, `tgl_launc`, `synopsys`, `genre`, `poster`) VALUES
 (3, 'TG003', 'Testing dengan gambar', '2022-08-04', 'asdasdas', 'Action', 'TG003-220817-7f312e33fe.jpg'),
-(4, 'TG004', 'Testing dengan gambar', '2022-08-04', 'asdasdas', 'Action', 'TG004-220817-dfef3df742.jpg'),
 (5, 'RW005', 'Run Winner', '2022-08-10', 'asdasdasd', 'Biography', 'RW005-220817-00c8397568.jpg');
 
 -- --------------------------------------------------------
@@ -91,8 +89,7 @@ CREATE TABLE `jadwal` (
 
 INSERT INTO `jadwal` (`id_jadwal`, `kd_jadwal`, `judul_film`, `bioskop`, `tgl_waktu_tayang`, `jumlah_kursi`) VALUES
 (1, 'ASDAD12313', 3, 1, '2022-08-19 07:08:11', 50),
-(2, 'ASD12318082022942RW00500002', 5, 1, '2022-08-18 09:42:00', 30),
-(3, 'ASDAD123132TES', 3, 2, '2022-08-19 07:08:11', 45);
+(2, 'ASD12318082022942RW00500002', 5, 1, '2022-08-18 09:42:00', 30);
 
 -- --------------------------------------------------------
 
@@ -114,8 +111,8 @@ CREATE TABLE `pesan` (
 --
 
 INSERT INTO `pesan` (`id_pesan`, `jadwal`, `kd_pesan`, `judul`, `nama_bioskop`, `kursi`) VALUES
-(1, 3, 'KWE001', 'Testing dengan gambar', 'Moviemax Sarinah', 13),
-(2, 2, 'JAM002', 'Run Winner', 'Moviemax Dinoyo', 18);
+(2, 2, 'JAM002', 'Run Winner', 'Moviemax Dinoyo', 18),
+(4, 2, 'YMU004', 'Run Winner', 'Moviemax Dinoyo', 1);
 
 --
 -- Indexes for dumped tables
@@ -174,7 +171,7 @@ ALTER TABLE `jadwal`
 -- AUTO_INCREMENT untuk tabel `pesan`
 --
 ALTER TABLE `pesan`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -184,14 +181,14 @@ ALTER TABLE `pesan`
 -- Ketidakleluasaan untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
-  ADD CONSTRAINT `jadwal_ibfk_1` FOREIGN KEY (`judul_film`) REFERENCES `film` (`id_film`),
-  ADD CONSTRAINT `jadwal_ibfk_2` FOREIGN KEY (`bioskop`) REFERENCES `bioskop` (`id_bioskop`);
+  ADD CONSTRAINT `jadwal_ibfk_1` FOREIGN KEY (`judul_film`) REFERENCES `film` (`id_film`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `jadwal_ibfk_2` FOREIGN KEY (`bioskop`) REFERENCES `bioskop` (`id_bioskop`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `pesan`
 --
 ALTER TABLE `pesan`
-  ADD CONSTRAINT `pesan_ibfk_1` FOREIGN KEY (`jadwal`) REFERENCES `jadwal` (`id_jadwal`);
+  ADD CONSTRAINT `pesan_ibfk_1` FOREIGN KEY (`jadwal`) REFERENCES `jadwal` (`id_jadwal`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
