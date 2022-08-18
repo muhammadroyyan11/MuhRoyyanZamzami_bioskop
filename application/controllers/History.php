@@ -29,6 +29,7 @@ class History extends CI_Controller
     public function index()
     {
         $get = $this->pesan->get()->result();
+
         $data = array(
             'title' => 'Home',
             'pesan' => $get

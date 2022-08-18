@@ -55,7 +55,18 @@ class Film extends CI_Controller
     {
         $post = $this->input->post(null, TRUE);
 
-        $this->pesan->add($post);
+        $getCode = strtoupper(random_string('alpha', 3));
+
+        $getCount = $this->pesan->get()->num_rows();
+
+        $kode_terakhir = $getCount;
+        $kode_tambah = substr($kode_terakhir, -3, 3);
+        $kode_tambah++;
+        $number = $getCode . str_pad($kode_tambah, 3, '0', STR_PAD_LEFT);
+
+        $generate = $number;
+
+        $this->pesan->add($post, $generate);
         if ($this->db->affected_rows() > 0) {
             set_pesan('Film Berhasil Dismpan');
         }
